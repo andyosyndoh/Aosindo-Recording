@@ -8,6 +8,7 @@ import (
 )
 
 func Delete() {
+	Clear()
 	id := ""
 	for {
 		fmt.Println("Please enter Task Id to be deleted:")
@@ -24,9 +25,11 @@ func Delete() {
 					fmt.Scan(&consent)
 					if consent == "yes" || consent == "Yes" {
 						models.Tasks = append(models.Tasks[:i], models.Tasks[i+1:]...)
+						Clear()
 						fmt.Println("Delete Complete")
 						return
 					} else {
+						Clear()
 						fmt.Println("Delete Aborted")
 						return
 					}

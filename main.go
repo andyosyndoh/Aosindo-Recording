@@ -9,6 +9,7 @@ import (
 
 func main() {
 	var count int
+	internals.Clear()
 	fmt.Println("Hello Welcome to task manager")
 	for {
 		fmt.Println("Please choose what you want to do:\n1 Add task\n2 View Task\n3 Delete task\n4 Update task\n5 exit")

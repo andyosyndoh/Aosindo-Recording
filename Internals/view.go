@@ -7,6 +7,7 @@ import (
 
 
 func ViewTasks() {
+	Clear()
 	if len(models.Tasks) == 0 {
 		fmt.Println("You Have no tasks")
 		return
@@ -21,6 +22,7 @@ func ViewTasks() {
 	for _, v := range models.Tasks {
 		count ++
 		priority := GetPriority(v.Priority)
-		fmt.Printf("Task: %v\n ID = %v\n Description = %v\n Priotity = %v", count, v.ID,v.Description,priority)
+		fmt.Printf("Task: %v\n ID = %v\n Description = %v\n Priotity = %v\n", count, v.ID,v.Description,priority)
 	}
+	fmt.Println()
 }

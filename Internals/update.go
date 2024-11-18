@@ -1,13 +1,17 @@
 package internals
 
 import (
+	"bufio"
 	"fmt"
+	"os"
 	"strconv"
 
 	"task/models"
 )
 
 func UpdateTasks() {
+	scanner := bufio.NewScanner(os.Stdin)
+	Clear()
 	id := ""
 	for {
 		fmt.Println("Please enter Task Id to be updtaed:")
@@ -18,10 +22,9 @@ func UpdateTasks() {
 		} else {
 			for _, v := range models.Tasks {
 				if v.ID == num {
-					for {
+					for scanner.Scan(){
 						fmt.Println("Please Type new description Of The task:")
-						var Description string
-						fmt.Scan(&Description)
+						Description := scanner.Text()
 						if Description == "" {
 							fmt.Println("Description Cannot be Empty, Type Again")
 						} else {
@@ -41,9 +44,11 @@ func UpdateTasks() {
 									if consent == "yes" || "consent" == "Yes" {
 										v.Description = Description
 										v.Priority = num
+										Clear()
 										fmt.Println("Updated succesfully")
 										return
 									} else {
+										Clear()
 										fmt.Println("Updated aborted")
 										return
 									}

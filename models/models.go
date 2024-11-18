@@ -12,6 +12,8 @@ var Task struct {
 	Priority int
 }
 
+var Counter int
+
 
 
 
